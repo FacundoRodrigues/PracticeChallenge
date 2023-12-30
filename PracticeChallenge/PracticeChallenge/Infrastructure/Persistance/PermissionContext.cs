@@ -5,11 +5,11 @@ namespace PracticeChallenge.Infrastructure.Persistance
 {
     public class PermissionContext : DbContext
     {
-        protected PermissionContext(DbContextOptions options) : base(options)
+        public PermissionContext(DbContextOptions<PermissionContext> options) : base(options)
         {
         }
 
-        public DbSet<Permission> Permission { get; set; }
+        public DbSet<Permission> Permissions { get; set; }
         public DbSet<PermissionType> PermissionType { get; set; }
     }
 }

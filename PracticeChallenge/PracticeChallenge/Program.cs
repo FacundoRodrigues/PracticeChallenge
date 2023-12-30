@@ -1,4 +1,10 @@
+using System.Reflection;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using PracticeChallenge.Core.Abstractions;
+using PracticeChallenge.Core.Domain;
+using PracticeChallenge.Infrastructure;
 using PracticeChallenge.Infrastructure.Persistance;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,8 +16,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var connectionString = builder.Configuration.GetConnectionString("PracticeChallenge");
+var connectionString = builder.Configuration.GetConnectionString("Connectionstring");
 builder.Services.AddDbContext<PermissionContext>(x => x.UseSqlServer(connectionString));
+
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IPermissionRepository, PermissionRepository>();
 
 var app = builder.Build();
 

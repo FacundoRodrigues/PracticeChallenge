@@ -3,7 +3,7 @@ using PracticeChallenge.Core.Domain;
 
 namespace PracticeChallenge.Infrastructure
 {
-    public class PermissionRepository : IRepository<Permission>
+    public class PermissionRepository : IPermissionRepository
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<Permission> _permissionRepository;

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PracticeChallenge.Core.Abstractions;
+using PracticeChallenge.Infrastructure.Persistance;
 
 namespace PracticeChallenge.Infrastructure
 {
@@ -8,7 +9,7 @@ namespace PracticeChallenge.Infrastructure
         private readonly DbContext _context;
         private readonly Dictionary<Type, object> _repositories;
 
-        public UnitOfWork(DbContext context)
+        public UnitOfWork(PermissionContext context)
         {
             _context = context;
             _repositories = new Dictionary<Type, object>();
