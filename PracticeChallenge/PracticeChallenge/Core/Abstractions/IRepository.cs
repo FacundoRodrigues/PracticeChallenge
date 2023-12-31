@@ -2,10 +2,12 @@
 {
     public interface IRepository<T>
     {
-        IEnumerable<T> GetAll();
+        Task<T> GetByIdAsync(int id);
 
-        void Add(T entity);
+        Task<List<T>> GetAll(CancellationToken cancellationToken);
 
-        void Update(T entity);
+        Task Add(T entity, CancellationToken cancellationToken);
+
+        Task Update(T entity, CancellationToken cancellationToken);
     }
 }

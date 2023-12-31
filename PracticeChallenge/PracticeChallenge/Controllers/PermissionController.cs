@@ -1,10 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using PracticeChallenge.Core.Features.GetPermissions;
+using PracticeChallenge.Core.Features.ModifyPermission;
+using PracticeChallenge.Core.Features.RequestPermission;
 
 namespace PracticeChallenge.Controllers
 {
-    [Route("permission")]
     [ApiController]
     public class PermissionController : ControllerBase
     {
@@ -16,6 +17,7 @@ namespace PracticeChallenge.Controllers
         }
 
         [HttpGet]
+        [Route("permission")]
         public async Task<ActionResult> GetPermissions()
         {
             var request = new GetPermissionsRequest();
@@ -23,6 +25,24 @@ namespace PracticeChallenge.Controllers
             var response = await _mediator.Send(request);
 
             return Ok(response.Permissions);
+        }
+
+        [HttpPost]
+        [Route("permission")]
+        public async Task<ActionResult> RequestPermissions(CreatePermissionRequest request)
+        {
+            var response = await _mediator.Send(request);
+
+            return Created(string.Empty, response.Permission);
+        }
+
+        [HttpPut]
+        [Route("permission")]
+        public async Task<ActionResult> ModifyPermissions(ModifyPermissionRequest request)
+        {
+            var response = await _mediator.Send(request);
+
+            return Ok(response.Permission);
         }
     }
 }

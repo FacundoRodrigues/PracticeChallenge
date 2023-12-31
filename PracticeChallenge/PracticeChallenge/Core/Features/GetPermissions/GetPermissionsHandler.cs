@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using PracticeChallenge.Core.Abstractions;
+using PracticeChallenge.Core.Mapping;
 
 namespace PracticeChallenge.Core.Features.GetPermissions;
 
@@ -14,16 +15,8 @@ public class GetPermissionsHandler : IRequestHandler<GetPermissionsRequest, GetP
 
     public async Task<GetPermissionsResponse> Handle(GetPermissionsRequest request, CancellationToken cancellationToken)
     {
-        try
-        {
-            var permission = _permissionRepository.GetAll().ToList();
+        var permission = await _permissionRepository.GetAll(cancellationToken);
 
-            return new GetPermissionsResponse { Permissions = permission };
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
+        return new GetPermissionsResponse { Permissions = permission.ToModel() };
     }
 }

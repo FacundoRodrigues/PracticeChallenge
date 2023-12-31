@@ -6,43 +6,32 @@ namespace PracticeChallenge.Infrastructure
     public class PermissionRepository : IPermissionRepository
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IRepository<Permission> _permissionRepository;
+        private readonly IRepository<Permission> _repository;
 
         public PermissionRepository(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _permissionRepository = _unitOfWork.GetRepository<Permission>();
+            _repository = _unitOfWork.GetRepository<Permission>();
         }
 
-        public IEnumerable<Permission> GetAll()
+        public async Task<Permission> GetByIdAsync(int id)
         {
-            return _permissionRepository.GetAll();
+            return await _repository.GetByIdAsync(id);
         }
 
-        public void Add(Permission entity)
+        public async Task<List<Permission>> GetAll(CancellationToken cancellationToken)
         {
-            try
-            {
-                _permissionRepository.Add(entity);
-                _unitOfWork.Commit();
-            }
-            catch (Exception)
-            {
-                _unitOfWork.Rollback();
-            }
+            return await _repository.GetAll(cancellationToken);
         }
 
-        public void Update(Permission entity)
+        public async Task Add(Permission entity, CancellationToken cancellationToken)
         {
-            try
-            {
-                _permissionRepository.Update(entity);
-                _unitOfWork.Commit();
-            }
-            catch (Exception)
-            {
-                _unitOfWork.Rollback();
-            }
+            await _unitOfWork.HandleErrorsAsync(async () => await _repository.Add(entity, cancellationToken));
+        }
+
+        public async Task Update(Permission entity, CancellationToken cancellationToken)
+        {
+            await _unitOfWork.HandleErrorsAsync(async () => await _repository.Update(entity, cancellationToken));
         }
     }
 }

@@ -14,19 +14,27 @@ namespace PracticeChallenge.Infrastructure
             _dbSet = _context.Set<TEntity>();
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public async Task<TEntity> GetByIdAsync(int id)
         {
-            return _dbSet.ToList();
+            return await _dbSet.FindAsync(id);
         }
 
-        public void Add(TEntity entity)
+        public async Task<List<TEntity>> GetAll(CancellationToken cancellationToken)
         {
-            _dbSet.Add(entity);
+            return await _dbSet.ToListAsync(cancellationToken);
         }
 
-        public void Update(TEntity entity)
+        public async Task Add(TEntity entity, CancellationToken cancellationToken)
+        {
+            await _dbSet.AddAsync(entity, cancellationToken);
+        }
+
+        public Task Update(TEntity entity, CancellationToken cancellationToken)
         {
             _dbSet.Update(entity);
+            _context.Entry(entity).State = EntityState.Modified;
+
+            return Task.CompletedTask;
         }
     }
 }

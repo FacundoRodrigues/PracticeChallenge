@@ -1,29 +1,18 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PracticeChallenge.Core.Abstractions;
+﻿using PracticeChallenge.Core.Abstractions;
 using PracticeChallenge.Infrastructure.Persistance;
 
 namespace PracticeChallenge.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly DbContext _context;
+        private readonly PermissionContext _context;
         private readonly Dictionary<Type, object> _repositories;
+        private readonly IPermissionRepository _permissionRepository;
 
         public UnitOfWork(PermissionContext context)
         {
             _context = context;
             _repositories = new Dictionary<Type, object>();
-        }
-
-        public void Commit()
-        {
-            _context.SaveChanges();
-        }
-
-        public void Rollback()
-        {
-            //TODO: implement Rollback
-            // Rollback changes if needed
         }
 
         public IRepository<TEntity> GetRepository<TEntity>() where TEntity : class
@@ -38,9 +27,27 @@ namespace PracticeChallenge.Infrastructure
             return repository;
         }
 
-        public void Dispose()
+        public async Task HandleErrorsAsync(Func<Task> action)
         {
-            _context.Dispose();
+            await using var transaction = await _context.Database.BeginTransactionAsync();
+            try
+            {
+                await action();
+
+                await _context.SaveChangesAsync();
+
+                await transaction.CommitAsync();
+            }
+            catch
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
+        }
+
+        public async void Dispose()
+        {
+            await _context.DisposeAsync();
         }
     }
 }
