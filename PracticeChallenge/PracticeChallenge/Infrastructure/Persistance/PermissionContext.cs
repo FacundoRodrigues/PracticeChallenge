@@ -10,6 +10,14 @@ namespace PracticeChallenge.Infrastructure.Persistance
         }
 
         public DbSet<Permission> Permissions { get; set; }
-        public DbSet<PermissionType> PermissionType { get; set; }
+        public DbSet<PermissionType> PermissionTypes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Permission>()
+                .HasOne(p => p.PermissionType)
+                .WithMany()
+                .HasForeignKey(p => p.PermissionTypeId);
+        }
     }
 }

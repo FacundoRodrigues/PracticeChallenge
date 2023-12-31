@@ -1,8 +1,8 @@
 ﻿namespace PracticeChallenge.Core.Abstractions.IRepositories
 {
-    public interface IRepository<T>
+    public interface IRepository<T> where T : class
     {
-        Task<T> GetByIdAsync(int id);
+        Task<T> GetByIdAsync(int id, CancellationToken cancellationToken);
 
         Task<List<T>> GetAll(CancellationToken cancellationToken);
 

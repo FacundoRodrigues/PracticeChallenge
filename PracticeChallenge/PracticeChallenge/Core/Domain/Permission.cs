@@ -8,7 +8,9 @@ namespace PracticeChallenge.Core.Domain
         public string EmployeeName { get; protected set; }
         public string EmployeeLastName { get; protected set; }
         public DateTime PermissionDate { get; protected set; }
+
         public int PermissionTypeId { get; protected set; }
+        public PermissionType PermissionType { get; protected set; }
 
         public Permission()
         {
@@ -24,7 +26,7 @@ namespace PracticeChallenge.Core.Domain
             Guard.Argument(employeeName, nameof(employeeName)).NotNull();
             Guard.Argument(employeeLastName, nameof(employeeLastName)).NotNull();
             Guard.Argument(permissionDate, nameof(permissionDate)).NotDefault();
-            Guard.Argument(permissionTypeId, nameof(permissionTypeId)).Positive().GreaterThan(0);
+            //Guard.Argument(permissionTypeId, nameof(permissionTypeId)).Positive().GreaterThan(0);
 
             EmployeeName = employeeName;
             EmployeeLastName = employeeLastName;

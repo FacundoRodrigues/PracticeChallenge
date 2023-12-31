@@ -14,7 +14,7 @@ namespace PracticeChallenge.Core.Mapping
                 EmployeeName = permission.EmployeeName,
                 EmployeeLastName = permission.EmployeeLastName,
                 PermissionDate = permission.PermissionDate,
-                PermissionTypeId = permission.PermissionTypeId
+                PermissionType = permission.PermissionType.ToModel(permission.PermissionTypeId)
             };
         }
     }

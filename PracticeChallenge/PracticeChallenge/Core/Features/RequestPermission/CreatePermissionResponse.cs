@@ -1,8 +1,8 @@
-﻿using PracticeChallenge.Core.Domain;
+﻿using PracticeChallenge.Core.Model;
 
 namespace PracticeChallenge.Core.Features.RequestPermission;
 
 public class CreatePermissionResponse
 {
-    public Permission Permission { get; set; }
+    public PermissionModel Permission { get; set; }
 }
