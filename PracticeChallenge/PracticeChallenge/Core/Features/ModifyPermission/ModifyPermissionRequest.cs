@@ -1,9 +1,9 @@
 ﻿using Dawn;
 using MediatR;
-using PracticeChallenge.Core.Abstractions;
 using PracticeChallenge.Core.Model;
 using PracticeChallenge.Core.Mapping;
 using PracticeChallenge.Core.Domain;
+using PracticeChallenge.Core.Abstractions.IRepositories;
 
 namespace PracticeChallenge.Core.Features.ModifyPermission
 {

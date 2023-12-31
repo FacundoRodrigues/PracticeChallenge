@@ -1,13 +1,14 @@
 ﻿using PracticeChallenge.Core.Abstractions;
+using PracticeChallenge.Core.Abstractions.IRepositories;
 using PracticeChallenge.Infrastructure.Persistance;
+using PracticeChallenge.Infrastructure.Repositories;
 
-namespace PracticeChallenge.Infrastructure
+namespace PracticeChallenge.Infrastructure.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
         private readonly PermissionContext _context;
         private readonly Dictionary<Type, object> _repositories;
-        private readonly IPermissionRepository _permissionRepository;
 
         public UnitOfWork(PermissionContext context)
         {

@@ -1,11 +1,10 @@
 using System.Reflection;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using PracticeChallenge.Core.Abstractions;
-using PracticeChallenge.Core.Domain;
-using PracticeChallenge.Infrastructure;
+using PracticeChallenge.Core.Abstractions.IRepositories;
 using PracticeChallenge.Infrastructure.Persistance;
+using PracticeChallenge.Infrastructure.Repositories;
+using PracticeChallenge.Infrastructure.UnitOfWork;
 
 var builder = WebApplication.CreateBuilder(args);
 

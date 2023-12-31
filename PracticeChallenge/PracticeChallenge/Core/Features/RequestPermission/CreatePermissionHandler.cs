@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using PracticeChallenge.Core.Abstractions;
+using PracticeChallenge.Core.Abstractions.IRepositories;
 using PracticeChallenge.Core.Domain;
 using PracticeChallenge.Core.Mapping;
 

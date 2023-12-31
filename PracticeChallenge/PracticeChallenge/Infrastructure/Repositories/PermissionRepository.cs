@@ -1,7 +1,8 @@
 ﻿using PracticeChallenge.Core.Abstractions;
+using PracticeChallenge.Core.Abstractions.IRepositories;
 using PracticeChallenge.Core.Domain;
 
-namespace PracticeChallenge.Infrastructure
+namespace PracticeChallenge.Infrastructure.Repositories
 {
     public class PermissionRepository : IPermissionRepository
     {

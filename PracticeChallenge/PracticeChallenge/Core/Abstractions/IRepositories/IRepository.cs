@@ -1,4 +1,4 @@
-﻿namespace PracticeChallenge.Core.Abstractions
+﻿namespace PracticeChallenge.Core.Abstractions.IRepositories
 {
     public interface IRepository<T>
     {

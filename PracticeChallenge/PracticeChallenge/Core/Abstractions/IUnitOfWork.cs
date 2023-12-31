@@ -1,4 +1,6 @@
-﻿namespace PracticeChallenge.Core.Abstractions
+﻿using PracticeChallenge.Core.Abstractions.IRepositories;
+
+namespace PracticeChallenge.Core.Abstractions
 {
     public interface IUnitOfWork : IDisposable
     {

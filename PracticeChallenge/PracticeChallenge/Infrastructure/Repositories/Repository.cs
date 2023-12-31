@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PracticeChallenge.Core.Abstractions;
+using PracticeChallenge.Core.Abstractions.IRepositories;
 
-namespace PracticeChallenge.Infrastructure
+namespace PracticeChallenge.Infrastructure.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
