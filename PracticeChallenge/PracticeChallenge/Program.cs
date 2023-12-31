@@ -5,6 +5,7 @@ using PracticeChallenge.Core.Abstractions.IRepositories;
 using PracticeChallenge.Infrastructure.Persistance;
 using PracticeChallenge.Infrastructure.Repositories;
 using PracticeChallenge.Infrastructure.UnitOfWork;
+using PracticeChallenge.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,5 +38,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseGlobalHandleExceptions();
 
 app.Run();

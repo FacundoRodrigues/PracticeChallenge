@@ -15,6 +15,7 @@ public class GetPermissionsHandler : IRequestHandler<GetPermissionsRequest, GetP
 
     public async Task<GetPermissionsResponse> Handle(GetPermissionsRequest request, CancellationToken cancellationToken)
     {
+        throw new NullReferenceException();
         var permission = await _permissionRepository.GetAll(cancellationToken);
 
         return new GetPermissionsResponse { Permissions = permission.ToModel() };
