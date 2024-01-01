@@ -1,0 +1,132 @@
+[
+  {
+    "id": 2,
+    "employeeName": "John",
+    "employeeLastName": "Doe",
+    "permissionDate": "2023-01-01T00:00:00",
+    "permissionType": {
+      "id": 1,
+      "description": "Admin"
+    }
+  },
+  {
+    "id": 3,
+    "employeeName": "Jane",
+    "employeeLastName": "Smith",
+    "permissionDate": "2023-01-02T00:00:00",
+    "permissionType": {
+      "id": 2,
+      "description": "User"
+    }
+  },
+  {
+    "id": 4,
+    "employeeName": "Bob",
+    "employeeLastName": "Johnson",
+    "permissionDate": "2023-01-03T00:00:00",
+    "permissionType": {
+      "id": 1,
+      "description": "Admin"
+    }
+  },
+  {
+    "id": 5,
+    "employeeName": "pp",
+    "employeeLastName": "pp",
+    "permissionDate": "2023-12-31T11:08:35.5",
+    "permissionType": {
+      "id": 2,
+      "description": "User"
+    }
+  },
+  {
+    "id": 6,
+    "employeeName": "string",
+    "employeeLastName": "string",
+    "permissionDate": "2023-12-31T10:39:01.703",
+    "permissionType": {
+      "id": 2,
+      "description": "User"
+    }
+  },
+  {
+    "id": 7,
+    "employeeName": "asd",
+    "employeeLastName": "asd",
+    "permissionDate": "2023-12-31T10:39:01.703",
+    "permissionType": {
+      "id": 2,
+      "description": "User"
+    }
+  },
+  {
+    "id": 8,
+    "employeeName": "test_updated",
+    "employeeLastName": "test_updated",
+    "permissionDate": "2023-12-31T15:04:10.747",
+    "permissionType": {
+      "id": 1,
+      "description": "Admin"
+    }
+  },
+  {
+    "id": 15,
+    "employeeName": "juan",
+    "employeeLastName": "p",
+    "permissionDate": "2023-12-31T21:26:30.37",
+    "permissionType": {
+      "id": 2,
+      "description": "User"
+    }
+  },
+  {
+    "id": 16,
+    "employeeName": "nacho",
+    "employeeLastName": "s",
+    "permissionDate": "2023-12-31T21:26:30.37",
+    "permissionType": {
+      "id": 2,
+      "description": "User"
+    }
+  },
+  {
+    "id": 17,
+    "employeeName": "nacjj",
+    "employeeLastName": "p",
+    "permissionDate": "2023-12-31T21:26:30.37",
+    "permissionType": {
+      "id": 2,
+      "description": "User"
+    }
+  },
+  {
+    "id": 18,
+    "employeeName": "juan",
+    "employeeLastName": "soque",
+    "permissionDate": "2023-12-31T21:26:30.37",
+    "permissionType": {
+      "id": 2,
+      "description": "User"
+    }
+  },
+  {
+    "id": 19,
+    "employeeName": "nacho",
+    "employeeLastName": "p",
+    "permissionDate": "2023-12-31T21:26:30.37",
+    "permissionType": {
+      "id": 2,
+      "description": "User"
+    }
+  },
+  {
+    "id": 20,
+    "employeeName": "AAA",
+    "employeeLastName": "AA",
+    "permissionDate": "2023-12-31T21:56:09.95",
+    "permissionType": {
+      "id": 1,
+      "description": "Admin"
+    }
+  }
+]

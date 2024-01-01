@@ -11,6 +11,7 @@ namespace PracticeChallenge.Core.Mapping
         {
             return new PermissionModel
             {
+                Id = permission.Id,
                 EmployeeName = permission.EmployeeName,
                 EmployeeLastName = permission.EmployeeLastName,
                 PermissionDate = permission.PermissionDate,
