@@ -1,11 +1,14 @@
 import React from 'react'
 import { useForm } from '../../hooks/useForm'
 
-export const PermissionForm = () => {
-  const [formValues, hanldeInputChange] = useForm({})
+export const PermissionForm = ({ id }) => {
+  const [formValues, hanldeInputChange] = useForm()
+
+  console.log(id)
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    console.log(formValues)
   }
 
   return (
@@ -16,7 +19,9 @@ export const PermissionForm = () => {
             <label>EmployeeName</label>
             <input
               className="form-control"
+              name='employeeName'
               placeholder="Employee name"
+              onChange={ hanldeInputChange }
             />
           </div>
 
@@ -24,7 +29,9 @@ export const PermissionForm = () => {
             <label>EmployeeLastname</label>
             <input
               className="form-control"
+              name='employeeLastname'
               placeholder="Employee Lastname"
+              onChange={ hanldeInputChange }
             />
           </div>
 
@@ -32,15 +39,22 @@ export const PermissionForm = () => {
             <label>PermissionDate</label>
             <input
               className="form-control"
+              name='permissionDate'
+              type='datetime-local'
               placeholder="Permission Date"
+              onChange={ hanldeInputChange }
             />
           </div>
 
           <div className="form-group input-field">
-            <label>permissionType</label>
+            <label>PermissionType</label>
             <input
               className="form-control"
+              name='permissionType'
+              type='number'
+              min="0"
               placeholder="Permission Type"
+              onChange={ hanldeInputChange }
             />
           </div>
 
