@@ -7,20 +7,20 @@ using PracticeChallenge.Infrastructure.Repositories;
 using PracticeChallenge.Infrastructure.UnitOfWork;
 using PracticeChallenge.Middleware;
 
-//var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
 
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy(name: MyAllowSpecificOrigins,
-//        policy =>
-//        {
-//            policy.WithOrigins("http://localhost:5173")
-//                .AllowAnyHeader()
-//                .AllowAnyMethod();
-//        });
-//});
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:5173")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
 
 // Add services to the container.
 
@@ -38,6 +38,8 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IPermissionRepository, PermissionRepository>();
 
 var app = builder.Build();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

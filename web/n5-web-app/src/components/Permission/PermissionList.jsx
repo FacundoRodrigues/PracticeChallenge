@@ -1,17 +1,15 @@
 import React from 'react'
-import permissionMock from '../../mock/ListPermissionResponseMock.json'
+// import permissionMock from '../../mock/ListPermissionResponseMock.json'
 import { PermissionCard } from './PermissionCard'
-import { getPermissions } from '../../helpers/getPermissions'
+import { usePermissions } from '../../hooks/usePermissions'
 
 export const PermissionList = () => {
-  const permissions = permissionMock
-  const p = getPermissions()
-  console.log(p)
+  const permissions = usePermissions()
 
   return (
     <div className='card-grid permissions'>
       {
-        permissions.map((permission) =>
+        permissions && permissions.map(permission =>
           <PermissionCard
             key={ permission.id }
             { ...permission }

@@ -1,11 +1,13 @@
-export const getPermissions = async () => {
+export const getPermissions = async (category) => {
   const url = 'https://localhost:7280/permission'
-  const response = await fetch(url)
-  const { data } = await response.json()
+  let permissions
+  await fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      permissions = data
+    })
 
-  console.log(data)
-
-  const permissions = data.map(permission => {
+  const result = permissions.map(permission => {
     return {
       id: permission.id,
       employeeName: permission.employeeName,
@@ -18,5 +20,25 @@ export const getPermissions = async () => {
     }
   })
 
-  return permissions
+  return result
+}
+
+export const getPermissionsWithAxios = async (category) => {
+  const url = 'https://localhost:7280/permission'
+
+  const axios = require('axios')
+  axios.get(url)
+    .then(function (response) {
+    // handle success
+      console.log(response)
+    })
+    .catch(function (error) {
+    // handle error
+      console.log(error)
+    })
+    .finally(function () {
+    // always executed
+    })
+
+  return {}
 }
