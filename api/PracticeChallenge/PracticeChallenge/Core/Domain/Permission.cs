@@ -26,7 +26,7 @@ namespace PracticeChallenge.Core.Domain
             Guard.Argument(employeeName, nameof(employeeName)).NotNull();
             Guard.Argument(employeeLastName, nameof(employeeLastName)).NotNull();
             Guard.Argument(permissionDate, nameof(permissionDate)).NotDefault();
-            //Guard.Argument(permissionTypeId, nameof(permissionTypeId)).Positive().GreaterThan(0);
+            Guard.Argument(permissionTypeId, nameof(permissionTypeId)).Positive().GreaterThan(0);
 
             EmployeeName = employeeName;
             EmployeeLastName = employeeLastName;

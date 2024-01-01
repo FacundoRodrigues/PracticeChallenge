@@ -1,18 +1,57 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from '../../hooks/useForm'
+import { createPermission } from '../../helpers/createPermission'
+import { modifyPermission } from '../../helpers/modifyPermission'
+import { getPermissionById } from '../../helpers/getPermissionById'
+import { useNavigate } from 'react-router-dom'
 
-export const PermissionForm = ({ id }) => {
-  const [formValues, hanldeInputChange] = useForm()
+export const PermissionForm = ({
+  id
+}) => {
+  // Si Id tiene valor, sería un update
+  const isUpdate = id > 0
+  const navigate = useNavigate()
 
-  console.log(id)
+  const [title, setTitle] = useState('')
+  const [formValues, hanldeInputChange, reset, setFormValues] = useForm()
+
+  useEffect(() => {
+    if (isUpdate) {
+      getPermissionById(id)
+        .then(response => {
+          console.log(response)
+          setFormValues({
+            employeeName: response.employeeName || '',
+            employeeLastname: response.employeeLastName || '',
+            permissionDate: response.permissionDate || '',
+            permissionTypeId: response.permissionType?.id || 0
+          })
+        })
+    }
+  }, [])
+
+  useEffect(() => {
+    if (isUpdate) setTitle('Modify permission')
+    else setTitle('Create permission')
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(formValues)
+    const data = { ...formValues, id, permissionTypeId: parseInt(formValues.permissionTypeId, 10) }
+
+    if (isUpdate) {
+      modifyPermission(data)
+      navigate('/')
+    } else {
+      createPermission(data)
+      navigate('/')
+    }
   }
 
   return (
-    <div className='form-permission'>
+    <>
+    <h2 style={{ marginTop: '20px' }}>{title}</h2>
+      <div className='form-permission'>
       <form onSubmit={ handleSubmit }>
         <div className='form-control'>
           <div className="form-group input-field">
@@ -21,6 +60,7 @@ export const PermissionForm = ({ id }) => {
               className="form-control"
               name='employeeName'
               placeholder="Employee name"
+              value={ formValues.employeeName }
               onChange={ hanldeInputChange }
             />
           </div>
@@ -31,6 +71,7 @@ export const PermissionForm = ({ id }) => {
               className="form-control"
               name='employeeLastname'
               placeholder="Employee Lastname"
+              value={ formValues.employeeLastname }
               onChange={ hanldeInputChange }
             />
           </div>
@@ -42,18 +83,20 @@ export const PermissionForm = ({ id }) => {
               name='permissionDate'
               type='datetime-local'
               placeholder="Permission Date"
+              value={ formValues.permissionDate }
               onChange={ hanldeInputChange }
             />
           </div>
 
           <div className="form-group input-field">
-            <label>PermissionType</label>
+            <label>PermissionTypeId</label>
             <input
               className="form-control"
-              name='permissionType'
+              name='permissionTypeId'
               type='number'
               min="0"
-              placeholder="Permission Type"
+              placeholder="Permission Type Id"
+              value={ formValues.permissionTypeId }
               onChange={ hanldeInputChange }
             />
           </div>
@@ -61,6 +104,9 @@ export const PermissionForm = ({ id }) => {
           <button type="submit" className="btn btn-primary input-field">Submit</button>
         </div>
       </form>
+      {/* {!!error && <p style={{ color: 'red' }}>{error}</p>} */}
     </div>
+
+    </>
   )
 }

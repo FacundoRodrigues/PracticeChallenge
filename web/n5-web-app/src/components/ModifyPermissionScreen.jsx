@@ -7,7 +7,7 @@ export const ModifyPermissionScreen = () => {
 
   return (
     <>
-      <PermissionForm id={permissionId} />
+      <PermissionForm id={permissionId}/>
     </>
   )
 }
