@@ -15,11 +15,9 @@ export const modifyPermission = async (data) => {
   })
     .then((response) => response.json())
     .then(data => {
-      console.log('s')
       return data
     })
     .catch(err => {
-      console.log(err)
       return err
     })
 

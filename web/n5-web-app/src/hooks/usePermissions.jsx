@@ -9,7 +9,7 @@ export const usePermissions = () => {
       .then(permissions => {
         setPermissions(permissions)
       })
-  }, [])
+  }, [permissions])
 
   return permissions
 }
