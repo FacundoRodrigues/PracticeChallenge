@@ -26,6 +26,13 @@ export const Navbar = () => {
         >
           Create
         </NavLink>
+
+        <NavLink
+          className="nav-item nav-link"
+          to="/about"
+        >
+          Read this first
+        </NavLink>
       </div>
     </div>
   </nav>

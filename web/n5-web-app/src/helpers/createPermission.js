@@ -1,7 +1,6 @@
 export const createPermission = async (data) => {
   const body = JSON.stringify(data)
 
-  console.log(body)
   const url = 'https://localhost:7280/permissions'
 
   let permissionCreated
