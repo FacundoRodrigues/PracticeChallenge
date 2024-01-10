@@ -18,3 +18,11 @@
 .form-permission {
   margin-top: 20px;
 }
+
+.navbar {
+  padding: 10px;
+}
+
+.alert-title {
+  margin-bottom: 0px !important;
+}

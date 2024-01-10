@@ -4,10 +4,13 @@ import { PermissionCard } from './PermissionCard'
 import { usePermissions } from '../../hooks/usePermissions'
 
 export const PermissionList = () => {
-  const permissions = usePermissions()
+  const [permissions, error] = usePermissions()
+
+  console.log(error)
 
   return (
-    <div className='card-grid permissions'>
+    <>
+      <div className='card-grid permissions'>
       {
         permissions && permissions.map(permission =>
           <PermissionCard
@@ -18,5 +21,13 @@ export const PermissionList = () => {
         )
       }
     </div>
+
+    {
+      !!error &&
+      <div className="alert alert-danger">
+        <p className='alert-title'>{error}</p>
+      </div>
+    }
+    </>
   )
 }

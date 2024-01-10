@@ -58,6 +58,7 @@ export const PermissionForm = ({
             <label>EmployeeName</label>
             <input
               className="form-control"
+              autoComplete='off'
               name='employeeName'
               placeholder="Employee name"
               value={ formValues.employeeName }
@@ -69,6 +70,7 @@ export const PermissionForm = ({
             <label>EmployeeLastname</label>
             <input
               className="form-control"
+              autoComplete='off'
               name='employeeLastname'
               placeholder="Employee Lastname"
               value={ formValues.employeeLastname }
